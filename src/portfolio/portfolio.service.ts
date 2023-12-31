@@ -77,9 +77,14 @@ export class PortfolioService {
                 limit: 1,
             });
 
+        const nativeToken: number = balanceNow.result.assets
+            .filter(e => e.tokenType === "NATIVE")
+            .reduce((acc, val) => acc + Number(val.balanceUsd), 0)
+
         return {
             balanceNow: Number(balanceNow.result.totalBalanceUsd),
-            balanceLastYear: Number(balanceLastYear.result.totalBalanceUsd)
+            balanceLastYear: Number(balanceLastYear.result.totalBalanceUsd),
+            nativeToken: nativeToken
         }
     }
 
