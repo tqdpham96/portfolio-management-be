@@ -5,6 +5,7 @@ import { TransformInterceptor } from './common/interceptors/response-mapping-int
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalInterceptors(new TransformInterceptor());
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')
