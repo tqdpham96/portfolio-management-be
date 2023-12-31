@@ -78,8 +78,8 @@ export class PortfolioService {
             });
 
         return {
-            balanceNow: balanceNow.result.totalBalanceUsd,
-            balanceLastYear: balanceLastYear.result.totalBalanceUsd
+            balanceNow: Number(balanceNow.result.totalBalanceUsd),
+            balanceLastYear: Number(balanceLastYear.result.totalBalanceUsd)
         }
     }
 
