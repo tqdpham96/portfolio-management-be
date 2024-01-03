@@ -130,4 +130,17 @@ export class PortfolioService {
         })
         return nfts.result.assets
     }
+
+    getMarketSummary = async () => {
+        const market = await this.blockchainApiService.getMarketData();
+        const defi = await this.blockchainApiService.getDefiData();
+        return {
+            coins: market.active_cryptocurrencies,
+            market_cap: market.total_market_cap.usd,
+            volume: market.total_volume.usd,
+            market_cap_percentage: market.market_cap_percentage.btc,
+            defi_market_cap: Number(defi.defi_market_cap),
+            trading_volume_24h: Number(defi.trading_volume_24h)
+        }
+    }
 }

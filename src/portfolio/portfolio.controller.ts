@@ -16,6 +16,19 @@ export class PortfolioController {
         private service: PortfolioService,
     ) { }
 
+    @Get('/market-summary')
+    @ApiOperation({
+        summary: 'Get Market Summary',
+        description: 'Get Market Summary',
+    })
+    @ApiInternalServerErrorResponse({
+        description: 'Internal server error',
+    })
+    public async getMarketSummaryAPI(
+    ) {
+        return await this.service.getMarketSummary();
+    }
+
     @Get('/history')
     @ApiOperation({
         summary: 'Get Portfolio Balance History',

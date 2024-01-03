@@ -72,6 +72,31 @@ export interface NFTResponseIF {
     }
 }
 
+export interface MarketCGCIF {
+    active_cryptocurrencies: number,
+    total_market_cap: {
+        usd: number,
+    },
+    total_volume: {
+        usd: number,
+    },
+    market_cap_percentage: {
+        btc: number,
+    },
+}
+
+export interface DeFiCGCIF {
+    defi_market_cap: string,
+    eth_market_cap: string,
+    defi_to_eth_ratio: string,
+    trading_volume_24h: string,
+    defi_dominance: string,
+    top_coin_name: string,
+    top_coin_defi_dominance: number
+}
+
+
+
 @Injectable()
 export class BlockchainApiService {
     constructor() { }
@@ -237,4 +262,18 @@ export class BlockchainApiService {
         const logRes = await response.json();
         return logRes
     };
+
+    getMarketData = async () => {
+        // It is best practice to define the interface for response
+        const response = await fetch("https://api.coingecko.com/api/v3/global");
+        const dataJson: { data?: MarketCGCIF } = await response.json()
+        return dataJson?.data
+    }
+
+    getDefiData = async () => {
+        // It is best practice to define the interface for response
+        const response = await fetch("https://api.coingecko.com/api/v3/global/decentralized_finance_defi");
+        const dataJson: { data?: DeFiCGCIF } = await response.json()
+        return dataJson?.data
+    }
 }
