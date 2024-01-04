@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import fetch from 'node-fetch';
+import Web3 from 'web3';
 
 export interface AssetIF {
     blockchain: string,
@@ -101,6 +102,24 @@ export interface DeFiCGCIF {
 export class BlockchainApiService {
     constructor() { }
 
+    getAnkrRequestOption = (params: { method: string, query: any }) => {
+        const body = JSON.stringify({
+            jsonrpc: '2.0',
+            method: params.method,
+            params: params.query,
+            id: 1,
+        });
+        return {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json',
+            },
+            body: body,
+            redirect: 'follow',
+        }
+    }
+
     getTokenTransferByAddressAnkr = async (params: {
         address: string,
         fromTimestamp?: number,
@@ -118,23 +137,7 @@ export class BlockchainApiService {
         if (params.fromTimestamp) {
             query['fromTimestamp'] = params.fromTimestamp
         }
-
-        const raw = JSON.stringify({
-            jsonrpc: '2.0',
-            method: 'ankr_getTokenTransfers',
-            params: query,
-            id: 1,
-        });
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                accept: 'application/json',
-                'content-type': 'application/json',
-            },
-            body: raw,
-            redirect: 'follow',
-        };
+        const requestOptions = this.getAnkrRequestOption({ method: 'ankr_getTokenTransfers', query: query })
 
         const response = await fetch(
             `${process.env.ANKR_ENDPOINT}/?ankr_getTokenTransfers=`,
@@ -161,27 +164,15 @@ export class BlockchainApiService {
             networks: string[],
         }
     ): Promise<BalanceHistoryIF> => {
-        const raw = JSON.stringify({
-            jsonrpc: '2.0',
+        const requestOptions = this.getAnkrRequestOption({
             method: 'ankr_getAccountBalance',
-            params: {
+            query: {
                 walletAddress: params.wallet,
                 nativeFirst: true,
                 onlyWhitelisted: true,
                 blockchain: params.networks
             },
-            id: 1,
-        });
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                accept: 'application/json',
-                'content-type': 'application/json',
-            },
-            body: raw,
-            redirect: 'follow',
-        };
+        })
 
         const response = await fetch(
             `${process.env.ANKR_ENDPOINT}/?ankr_getAccountBalance=`,
@@ -199,27 +190,15 @@ export class BlockchainApiService {
             limit: number
         }
     ): Promise<BalanceHistoryIF> => {
-        const raw = JSON.stringify({
-            jsonrpc: '2.0',
+        const requestOptions = this.getAnkrRequestOption({
             method: 'ankr_getAccountBalanceHistorical',
-            params: {
+            query: {
                 walletAddress: params.wallet,
                 blockchain: params.networks,
                 pageSize: params.limit,
                 blockHeight: params.block
             },
-            id: 1,
-        });
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                accept: 'application/json',
-                'content-type': 'application/json',
-            },
-            body: raw,
-            redirect: 'follow',
-        };
+        })
 
         const response = await fetch(
             `${process.env.ANKR_ENDPOINT}/?ankr_getAccountBalanceHistorical=`,
@@ -235,25 +214,13 @@ export class BlockchainApiService {
             networks: string[],
         }
     ): Promise<NFTResponseIF> => {
-        const raw = JSON.stringify({
-            jsonrpc: '2.0',
+        const requestOptions = this.getAnkrRequestOption({
             method: 'ankr_getNFTsByOwner',
-            params: {
+            query: {
                 walletAddress: params.wallet,
                 blockchain: params.networks
             },
-            id: 1,
-        });
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                accept: 'application/json',
-                'content-type': 'application/json',
-            },
-            body: raw,
-            redirect: 'follow',
-        };
+        })
 
         const response = await fetch(
             `${process.env.ANKR_ENDPOINT}/?ankr_getNFTsByOwner=`,
@@ -275,5 +242,13 @@ export class BlockchainApiService {
         const response = await fetch("https://api.coingecko.com/api/v3/global/decentralized_finance_defi");
         const dataJson: { data?: DeFiCGCIF } = await response.json()
         return dataJson?.data
+    }
+
+    getWalletTransactionCount = async (params: { wallet: string, block?: number }) => {
+        const web3 = new Web3(new Web3.providers.HttpProvider(process.env.ANKR_ENDPOINT_ETH));
+        const txnCount: number = params.block ?
+            Number(await web3.eth.getTransactionCount(params.wallet, params.block)) :
+            Number(await web3.eth.getTransactionCount(params.wallet))
+        return txnCount
     }
 }

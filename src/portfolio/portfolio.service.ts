@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { BlockchainApiService, BalanceHistoryIF, AnkrTokenTransfersIF, NFTResponseIF } from 'src/blockchain-api/blockchain-api.service';
-import Web3 from 'web3';
 
 @Injectable()
 export class PortfolioService {
@@ -90,12 +89,15 @@ export class PortfolioService {
 
     getWalletTransactionSummaryData = async () => {
         const wallet = process.env.WALLET;
-        const web3 = new Web3(new Web3.providers.HttpProvider(process.env.ANKR_ENDPOINT_ETH));
         const blockLastYear: number = await this.blockchainApiService.getDateToBlock(
             Math.round((new Date().getTime() - 365 * 24 * 60 * 60 * 1000) / 1000), this.chain_name
         );
-        const txnNow: number = Number(await web3.eth.getTransactionCount(wallet));
-        const txnLastYear: number = Number(await web3.eth.getTransactionCount(wallet, blockLastYear));
+        const txnNow: number = await this.blockchainApiService.getWalletTransactionCount({
+            wallet: wallet
+        });
+        const txnLastYear: number = await this.blockchainApiService.getWalletTransactionCount({
+            wallet: wallet, block: blockLastYear
+        });
 
         return {
             txnCountNow: txnNow,
