@@ -5,7 +5,6 @@ import { BlockchainApiService, BalanceHistoryIF, AnkrTokenTransfersIF, NFTRespon
 export class PortfolioService {
     private ethBlockPerDay = 7128;
     private chain_name = 'ethereum';
-    private chain_id = 1;
     private chain_ankr = 'eth';
 
     constructor(
