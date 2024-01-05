@@ -37,10 +37,7 @@
 <h3 align="center">Web3 Portfolio Management Backend NestJS</h3>
 
   <p align="center">
-    The Backend code for my Medium article of "Let's Build a Web3 Portfolio Management Together: Part II - Back-end Development". This series go into the creation of a Web3 Portfolio Management system from sratch (UI, backend, frontend, blockchain API, cloud deployment). Please find the article link if you find it useful: 
-
-    https://medium.com/@pqducthinhbka/lets-build-a-web3-portfolio-management-together-part-ii-back-end-development-c3b68c54444c
-
+    The Backend code for my Medium article of "Let's Build a Web3 Portfolio Management Together: Part II - Back-end Development". This series go into the creation of a Web3 Portfolio Management system from sratch (UI, backend, frontend, blockchain API, cloud deployment). Please find the article link in the end if you find it useful.
 
     <br />
     <a href="https://crypto-portfolio-management-tqdpham.netlify.app/">View Demo</a>
