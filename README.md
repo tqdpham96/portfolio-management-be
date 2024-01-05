@@ -37,7 +37,11 @@
 <h3 align="center">Web3 Portfolio Management Backend NestJS</h3>
 
   <p align="center">
-    The Backend code for my Medium article of "Let's Build a Web3 Portfolio Management Together: Part II - Back-end Development". This series go into the creation of a Web3 Portfolio Management system from sratch (UI, backend, frontend, blockchain API, cloud deployment). Please find the article link if you find it useful: ...
+    The Backend code for my Medium article of "Let's Build a Web3 Portfolio Management Together: Part II - Back-end Development". This series go into the creation of a Web3 Portfolio Management system from sratch (UI, backend, frontend, blockchain API, cloud deployment). Please find the article link if you find it useful: 
+
+    https://medium.com/@pqducthinhbka/lets-build-a-web3-portfolio-management-together-part-ii-back-end-development-c3b68c54444c
+
+
     <br />
     <a href="https://crypto-portfolio-management-tqdpham.netlify.app/">View Demo</a>
     ·
@@ -82,7 +86,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://crypto-portfolio-management-tqdpham.netlify.app/)
 
 Hello, fellow builders! In Part I, we explored the foundational concepts and the vision of our Web3 Portfolio Management system. Now, it's time to roll up our sleeves and dive into the heart of the matter - backend development.
 If you missed the overview and want to catch up, don't worry! You can find Part I here. 
@@ -161,12 +164,25 @@ Install the requirement libraries and NestJS framework
 ## Usage
 
 * GET /api/v1/portfolio/market-summary // For Market Summary
+https://api-asset-management-tqdpham.cyclic.app/market-summary
+
 * GET /api/v1/portfolio/history // For Balance Chart
+https://api-asset-management-tqdpham.cyclic.app/history
+
 * GET /api/v1/portfolio/balance  // For Balance Distribution
+https://api-asset-management-tqdpham.cyclic.app/balance
+
 * GET /api/v1/portfolio/transaction // For Transaction Count
+https://api-asset-management-tqdpham.cyclic.app/transaction
+
 * GET /api/v1/portfolio/token-transfers // For Token Transfers
+https://api-asset-management-tqdpham.cyclic.app/token-transfers
+
 * GET /api/v1/portfolio/token-holding // For Token Holding Table
+https://api-asset-management-tqdpham.cyclic.app/token-holding
+
 * GET /api/v1/portfolio/nft-holding // For NFT Holding
+https://api-asset-management-tqdpham.cyclic.app/nft-holding
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -222,7 +238,7 @@ Dr. T.Q.D. Pham -  pqducthinhbka@gmail.com
 
 Project Link: [https://crypto-portfolio-management-tqdpham.netlify.app/](https://crypto-portfolio-management-tqdpham.netlify.app/)
 
-Medium Article: [https://crypto-portfolio-management-tqdpham.netlify.app/](https://crypto-portfolio-management-tqdpham.netlify.app/)
+Medium Article: [https://medium.com/@pqducthinhbka/lets-build-a-web3-portfolio-management-together-part-ii-back-end-development-c3b68c54444c](https://medium.com/@pqducthinhbka/lets-build-a-web3-portfolio-management-together-part-ii-back-end-development-c3b68c54444c)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
