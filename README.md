@@ -25,8 +25,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -34,11 +32,10 @@
     <img src="./product-ui.png" alt="Logo" width="1200" height="400">
   </a>
 
-<h3 align="center">Web3 Portfolio Management Backend NestJS</h3>
+<h3 align="center">Customer Experience Dashboard</h3>
 
   <p align="center">
     The Backend code for my Medium article of "Let's Build a Web3 Portfolio Management Together: Part II - Back-end Development". This series go into the creation of a Web3 Portfolio Management system from sratch (UI, backend, frontend, blockchain API, cloud deployment). Please find the article link in the end if you find it useful.
-
     <br />
     <a href="https://crypto-portfolio-management-tqdpham.netlify.app/">View Demo</a>
     ·
@@ -160,25 +157,25 @@ Install the requirement libraries and NestJS framework
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* GET /api/v1/portfolio/market-summary // For Market Summary
+* GET /api/v1/portfolio/market-summary:
 https://api-asset-management-tqdpham.cyclic.app/market-summary
 
-* GET /api/v1/portfolio/history // For Balance Chart
+* GET /api/v1/portfolio/history:
 https://api-asset-management-tqdpham.cyclic.app/history
 
-* GET /api/v1/portfolio/balance  // For Balance Distribution
+* GET /api/v1/portfolio/balance:
 https://api-asset-management-tqdpham.cyclic.app/balance
 
-* GET /api/v1/portfolio/transaction // For Transaction Count
+* GET /api/v1/portfolio/transaction:
 https://api-asset-management-tqdpham.cyclic.app/transaction
 
-* GET /api/v1/portfolio/token-transfers // For Token Transfers
+* GET /api/v1/portfolio/token-transfers:
 https://api-asset-management-tqdpham.cyclic.app/token-transfers
 
-* GET /api/v1/portfolio/token-holding // For Token Holding Table
+* GET /api/v1/portfolio/token-holding:
 https://api-asset-management-tqdpham.cyclic.app/token-holding
 
-* GET /api/v1/portfolio/nft-holding // For NFT Holding
+* GET /api/v1/portfolio/nft-holding:
 https://api-asset-management-tqdpham.cyclic.app/nft-holding
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
